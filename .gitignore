@@ -1,0 +1,4 @@
+venv/
+.env
+TimeSeriesDB/__pycache__
+TimeSeriesDB/FetchData2.ipynb
