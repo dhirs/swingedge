@@ -11,8 +11,8 @@ ts = TimeSeries(key=alpha_api_key,output_format="json")
 
 
 
-def GetRawStockData(symbol="IBM",interval="1min"):
-   Rawdata = ts.get_intraday(symbol=symbol,interval=interval)
+def GetRawStockData(symbol="IBM",interval="1min",size="compact"):
+   Rawdata = ts.get_intraday(symbol=symbol,interval=interval,outputsize=size)
    data = parse_stock_json_to_df(symbol,Rawdata)
    
    DataStore_to_DB(data)
