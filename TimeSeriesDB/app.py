@@ -11,13 +11,20 @@ ts = TimeSeries(key=alpha_api_key,output_format="json")
 
 
 
-def GetRawStockData(symbol="IBM",interval="1min",size="compact"):
-   Rawdata = ts.get_intraday(symbol=symbol,interval=interval,outputsize=size)
+def GetRawStockData(*,symbol="IBM",interval="1min",size="full",month):
+   Rawdata = ts.get_intraday(symbol=symbol,interval=interval,outputsize=size,month=month)
    data = parse_stock_json_to_df(symbol,Rawdata)
    
    DataStore_to_DB(data)
    
    print(data.head(5))
    
-
-GetRawStockData("IBM","1min")
+for i in range(1,13):
+   if i<=9:
+      month = f"2024-0{i}"
+      print(month)
+   else:
+      month = f"2024-{i}"
+      print(month)
+    
+   GetRawStockData(month=month)
