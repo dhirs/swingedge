@@ -1,5 +1,5 @@
 import pandas as pd
-timestamp_list,symbol_list,open_list,close_list,high_list,low_list,symbol_list = [],[],[],[],[],[],[]
+timestamp_list,symbol_list,open_list,close_list,high_list,low_list,symbol_list,volume_list = [],[],[],[],[],[],[],[]
 
 def parse_stock_json_to_df(symbol,raw_data):
     for key, value in raw_data[0].items():
@@ -9,13 +9,16 @@ def parse_stock_json_to_df(symbol,raw_data):
         close_list.append(value["4. close"])
         high_list.append(value["2. high"])
         low_list.append(value["3. low"])
+        volume_list.append(value["5. volume"])
         
     new_data = {'Symbol':symbol_list,
                 'Timestamp':timestamp_list,
                 'Open':open_list,
                 'Close':close_list,
                 'High':high_list,
-                'Low':low_list}
+                'Low':low_list,
+                'Volume':volume_list}
+    
     
     data = pd.DataFrame(new_data)
     
