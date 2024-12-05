@@ -1,7 +1,6 @@
 from alpha_vantage.timeseries import TimeSeries
 from dotenv import load_dotenv
 from FetchStockData import parse_stock_json_to_df
-from DBConnect import InsertData_to_DB, ShowDatafromDB
 import os
 
 load_dotenv()
@@ -13,11 +12,6 @@ table_name = "stocks_data"
 def GetRawStockData(*,symbol="IBM",interval="1min",size="full",month):
    Rawdata = ts.get_intraday(symbol=symbol,interval=interval,outputsize=size,month=month)
    data = parse_stock_json_to_df(symbol,Rawdata)
-   
-   InsertData_to_DB(df=data,table_name=table_name)
-   datafromdb = ShowDatafromDB(table_name)
-   print(datafromdb.head(10))
-   print("update")
  
    
    
