@@ -16,7 +16,8 @@ def GetRawStockData(*,symbol="IBM",interval="1min",size="full",month):
    
    InsertData_to_DB(df=data,table_name=table_name)
    datafromdb = ShowDatafromDB(table_name)
-   print(datafromdb.head(5))
+   print(datafromdb.head(10))
+   print("update")
  
    
    
