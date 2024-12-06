@@ -5,9 +5,10 @@ from dotenv import load_dotenv
 from Makedataframe import parse_stock_json_to_df
 from sqs import PublishToSqs
 
-load_dotenv()
+# load_dotenv()
 
-alpha_api_key = os.getenv("ALPHA_API_KEY")
+# alpha_api_key = os.getenv("ALPHA_API_KEY")
+alpha_api_key = "F0HVGA83MVMS5OR3"
 ts = TimeSeries(key=alpha_api_key, output_format="json")
 
 batch_size = 60
